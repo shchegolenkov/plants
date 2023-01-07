@@ -12,6 +12,7 @@ body {
   line-height: 35px;
   font-weight: 400;
   color: #000;
+  min-width: 363px;
 }
 
 .wrapper {
@@ -574,7 +575,7 @@ img {
   }
 
   .prices-button {
-    margin-bottom: 35px;
+    margin-bottom: 36px;
   }
 
   .prices-wrapper {
@@ -644,6 +645,10 @@ img {
 }
 
 @media (max-width: 640px) {
+  .nav-list {
+    min-width: 350px;
+  }
+
   .prices-wrapper {
     flex-direction: column;
     padding-bottom: 35px;
@@ -655,7 +660,7 @@ img {
   }
 
   .prices-block {
-    width: 59%;
+    width: 67%;
     margin: 0 auto;
     padding: 29px 22px;
     display: flex;
@@ -784,22 +789,34 @@ img {
 
   .prices-title {
     font-size: 25px;
-    margin-bottom: 40px;
+    margin-bottom: 28px;
+  }
+
+  .prices-block {
+    padding-bottom: 26px;
+  }
+
+  .prices-accourdion:not(:last-child) {
+    margin-bottom: 14px;
   }
 
   .prices-accourdion__price {
     width: 180px;
     font-size: 15px;
-    background-position: 130px;
+    background-position: 125px;
+    padding-left: 31px;
   }
 
   .prices-contact-title {
+    width: 70%;
     font-size: 20px;
+    margin-bottom: 20px;
   }
 
   .prices-button {
     min-width: 121px;
     font-size: 15px;
+    padding: 5px;
   }
 
   .prices-image-block {
@@ -807,6 +824,38 @@ img {
   }
 
   .prices-wrapper {
+    padding-top: 16px;
     padding-bottom: 5px;
+  }
+
+  .contacts-wrapper {
+    min-height: 445px;
+    padding-top: 28px;
+    background-size: 100px;
+    background-position-x: 49%;
+  }
+
+  .contacts-title {
+    font-size: 25px;
+    line-height: 1.15;
+    margin-bottom: 83px;
+  }
+
+  .contacts-select-block {
+    width: 300px;
+  }
+
+  .contacts-select {
+    width: 300px;
+    background-position: 262px;
+  }
+
+  .footer-wrapper {
+    padding: 17px 0px 16px;
+    min-height: 125px;
+  }
+
+  .school-block {
+    margin: 5px 0px 6px;
   }
 }
