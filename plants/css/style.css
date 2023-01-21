@@ -12,7 +12,7 @@ body {
   line-height: 35px;
   font-weight: 400;
   color: #000;
-  min-width: 363px;
+  min-width: 303px;
 }
 
 .wrapper {
@@ -938,5 +938,21 @@ img {
 
   .school-block {
     margin: 5px 0px 6px;
+  }
+}
+
+
+@media (max-width: 376px) {
+  .prices-accourdion__price {
+    width: 150px;
+  }
+
+  .contacts-select-block {
+    width: 220px;
+  }
+
+  .contacts-select {
+    width: 100%;
+    background-position: 180px;
   }
 }
