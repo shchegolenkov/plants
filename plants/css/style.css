@@ -12,6 +12,7 @@ body {
   line-height: 35px;
   font-weight: 400;
   color: #000;
+  min-width: 303px;
 }
 
 .wrapper {
@@ -72,6 +73,7 @@ img {
 .logo-block {
   display: flex;
   align-items: baseline;
+  z-index: 10;
 }
 
 .nav-list {
@@ -94,6 +96,7 @@ img {
   font-size: 16px;
   line-height: 50px;
   color: #010201;
+  transition: 0.5s;
 }
 
 .nav-list__link:hover {
@@ -104,6 +107,10 @@ img {
 .nav-list__link--active {
   color: #e06733;
   font-weight: 700;
+}
+
+.mobile-menu {
+  display: none;
 }
 
 /* Welcome section */
@@ -218,7 +225,7 @@ img {
 }
 
 .service-buttons-block {
-  min-width: 560px;
+  width: 560px;
   padding-top: 10px;
   display: flex;
   justify-content: space-between;
@@ -236,10 +243,11 @@ img {
   align-items: flex-start;
   flex-wrap: wrap;
   padding-bottom: 66px;
+  column-gap: 20px;
 }
 
 .service-card {
-  width: 330px;
+  max-width: 330px;
   overflow: hidden;
   border-radius: 20px;
   margin-bottom: 55px;
@@ -248,14 +256,13 @@ img {
 }
 
 .service-card__image-block {
-  width: 330px;
   height: 350px;
   position: relative;
 }
 
 .service-card__image {
-  width: 330px;
-  height: 350px;
+  width: 100%;
+  height: 100%;
 }
 
 .service-card__title {
@@ -391,15 +398,10 @@ img {
   transition: background-color 0.5s;
 }
 
-.contacts-select:hover {
+.contacts-select:hover,
+.contacts-select:focus {
   background-color: #c1e698;
   transition: background-color 0.5s;
-}
-
-.contacts-select:focus {
-  background-image: url("../img/city-arrow-up.svg");
-  background-color: #c1e698;
-  transition: background-image 0.5s;
 }
 
 .contacts-option {
@@ -445,4 +447,512 @@ img {
 .social-icon:hover {
   fill: #e06733;
   transition: 0.5s;
+}
+
+/* Adaptive */
+
+@media (max-width: 1366px) {
+  .wrapper {
+    max-width: 87%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .welcome-wrapper {
+    padding-bottom: 70px;
+  }
+
+  .welcome-description {
+    padding-top: 0;
+    max-width: 51.8%;
+  }
+
+  .welcome-image-block {
+    max-width: 42%;
+    height: auto;
+  }
+
+  .welcome-title {
+    font-size: 40px;
+    margin-bottom: 31px;
+  }
+
+  .welcome-text {
+    font-size: 18px;
+    line-height: 32px;
+    margin-bottom: 35px;
+  }
+
+  .about-wrapper {
+    align-items: center;
+  }
+
+  .about-description {
+    max-width: 55%;
+    padding-top: 0;
+  }
+
+  .about-image-block {
+    max-width: 40%;
+  }
+
+  .service-block {
+    width: 100%;
+  }
+
+  .service-card {
+    width: 30%;
+  }
+}
+
+@media (max-width: 992px) {
+  .header-wrapper {
+    min-height: 121px;
+  }
+
+  .welcome-wrapper {
+    padding-top: 36px;
+  }
+
+  .welcome-title {
+    font-size: 35px;
+  }
+
+  .welcome-text {
+    font-size: 16px;
+    line-height: 25px;
+    padding-left: 5px;
+  }
+
+  .welcome-image-block {
+    order: 1;
+  }
+
+  .about-wrapper {
+    padding-bottom: 84px;
+  }
+
+  .about-title {
+    font-size: 35px;
+    padding-right: 0;
+  }
+
+  .service-block {
+    display: block;
+    padding-top: 18px;
+    margin-bottom: 41px;
+  }
+
+  .service-title {
+    font-size: 35px;
+    line-height: 48px;
+  }
+
+  .service-cards {
+    padding-bottom: 32px;
+  }
+
+  .service-card {
+    width: 41.9%;
+    margin-bottom: 38px;
+  }
+
+  .service-card__title {
+    margin-bottom: 10px;
+  }
+
+  .service-card__text {
+    margin-bottom: 20px;
+  }
+
+  .prices-title {
+    font-size: 35px;
+    padding-left: 14px;
+    margin-bottom: 52px;
+  }
+
+  .prices-contact-title {
+    font-size: 25px;
+    line-height: 35px;
+    margin-top: 101px;
+    margin-bottom: 28px;
+    max-width: 300px;
+  }
+
+  .prices-button {
+    margin-bottom: 36px;
+  }
+
+  .prices-wrapper {
+    padding-bottom: 87px;
+  }
+
+  .contacts-wrapper {
+    background-position: 52% bottom;
+    background-size: 200px;
+    min-height: 740px;
+    padding-top: 40px;
+  }
+
+  .contacts-title {
+    margin-bottom: 99px;
+  }
+
+  .contacts-select-block {
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-wrapper {
+    flex-direction: column;
+    padding-top: 37px;
+  }
+
+  .about-description {
+    max-width: 100%;
+  }
+
+  .about-title {
+    max-width: 430px;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 48px;
+  }
+
+  .about-text {
+    margin-top: 50px;
+    margin-bottom: 67px;
+  }
+
+  .about-image-block {
+    max-width: 37.4%;
+  }
+
+  .service-buttons-block {
+    max-width: 560px;
+    width: 100%;
+  }
+
+  .footer-wrapper {
+    flex-direction: column;
+    padding: 27px 0px 23px;
+    min-height: 180px;
+  }
+
+  .author-block {
+    margin-right: 7px;
+  }
+
+  .school-block {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-list {
+    min-width: 350px;
+  }
+
+  .prices-wrapper {
+    flex-direction: column;
+    padding-bottom: 35px;
+  }
+
+  .prices-title {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .prices-block {
+    width: 67%;
+    margin: 0 auto;
+    padding: 29px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .prices-accourdion:last-child {
+    margin-bottom: 0;
+  }
+
+  .contact-block {
+    width: 100%;
+    align-items: center;
+  }
+
+  .prices-contact-title {
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .button {
+    min-height: 34px;
+  }
+
+  .header-wrapper {
+    min-height: 96px;
+  }
+
+  .nav-list {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -400px;
+    display: flex;
+    visibility: hidden;
+    flex-direction: column;
+    margin: 0;
+    padding-top: 90px;
+    padding-bottom: 58px;
+    padding-left: 45px;
+    background-color: #d6e7d2;
+    z-index: 9;
+    box-shadow: 0 -6px 10px 5px rgb(0 0 0 / 50%);
+    transition: ease-in-out 0.3s;
+  }
+
+  .nav-list--active {
+    visibility: visible;
+    top: 0;
+  }
+  
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    height: 25px;
+    justify-content: space-evenly;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    padding: 1px 0px;
+    z-index: 10;
+  }
+
+  .mobile-menu::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #717171;
+    transition: 0.3s;
+  }
+
+  .mobile-menu--active::before {
+    transform: rotate(45deg);
+    top: 11px;
+  }
+
+  .mobile-menu::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #717171;
+    transition: 0.3s;
+  }
+
+  .mobile-menu--active::after {
+    transform: rotate(-45deg);
+    bottom: 12px;
+  }
+
+  .mobile-menu__line {
+    background-color: #717171;
+    width: 100%;
+    height: 2px;
+    transition: 0.3s;
+  }
+
+  .mobile-menu--active .mobile-menu__line {
+    transform: scale(0);
+  }
+
+  .welcome-wrapper {
+    padding-top: 26px;
+    padding-bottom: 24px;
+  }
+
+  .welcome-image-block {
+    display: none;
+  }
+
+  .welcome-description {
+    max-width: 100%;
+  }
+
+  .welcome-title {
+    font-size: 25px;
+    line-height: 35px;
+    margin-bottom: 20px;
+  }
+
+  .welcome-text {
+    margin-bottom: 23px;
+    padding-left: 0;
+  }
+
+  .welcome-button {
+    font-size: 10px;
+    min-width: 100px;
+    height: 34px;
+  }
+
+  .about-wrapper {
+    padding-top: 30px;
+    padding-bottom: 17px;
+  }
+
+  .about-title {
+    font-size: 25px;
+    line-height: 33px;
+  }
+
+  .about-text {
+    font-size: 15px;
+    line-height: 25px;
+    margin-top: 13px;
+    margin-bottom: 0px;
+  }
+
+  .about-image-block {
+    max-width: 45%;
+  }
+
+  .service-title {
+    width: 58%;
+    font-size: 25px;
+    line-height: 33px;
+    margin-top: 12px;
+  }
+
+  .service-block {
+    margin-bottom: 39px;
+  }
+
+  .service-buttons-block {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-top: 18px;
+  }
+
+  .service-button {
+    padding: 0;
+    min-width: 121px;
+    height: 35px;
+    font-size: 15px;
+  }
+
+  .service-cards {
+    justify-content: center;
+    padding-bottom: 0;
+  }
+
+  .service-card {
+    width: 84.8%;
+    max-width: 84.8%;
+    margin-bottom: 34px;
+  }
+
+  .service-card:last-child {
+    margin-bottom: 27px;
+  }
+
+  .prices-title {
+    font-size: 25px;
+    margin-bottom: 28px;
+  }
+
+  .prices-block {
+    padding-bottom: 26px;
+  }
+
+  .prices-accourdion:not(:last-child) {
+    margin-bottom: 14px;
+  }
+
+  .prices-accourdion__price {
+    width: 180px;
+    font-size: 15px;
+    background-position: 125px;
+    padding-left: 31px;
+  }
+
+  .prices-contact-title {
+    width: 70%;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .prices-button {
+    min-width: 121px;
+    font-size: 15px;
+    padding: 5px;
+  }
+
+  .prices-image-block {
+    display: none;
+  }
+
+  .prices-wrapper {
+    padding-top: 16px;
+    padding-bottom: 5px;
+  }
+
+  .contacts-wrapper {
+    min-height: 445px;
+    padding-top: 28px;
+    background-size: 100px;
+    background-position-x: 49%;
+  }
+
+  .contacts-title {
+    font-size: 25px;
+    line-height: 1.15;
+    margin-bottom: 83px;
+  }
+
+  .contacts-select-block {
+    width: 300px;
+  }
+
+  .contacts-select {
+    width: 300px;
+    background-position: 262px;
+  }
+
+  .footer-wrapper {
+    padding: 17px 0px 16px;
+    min-height: 125px;
+  }
+
+  .school-block {
+    margin: 5px 0px 6px;
+  }
+}
+
+
+@media (max-width: 376px) {
+  .prices-accourdion__price {
+    width: 150px;
+  }
+
+  .contacts-select-block {
+    width: 220px;
+  }
+
+  .contacts-select {
+    width: 100%;
+    background-position: 180px;
+  }
 }
