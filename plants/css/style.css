@@ -12,7 +12,7 @@ body {
   line-height: 35px;
   font-weight: 400;
   color: #000;
-  min-width: 303px;
+  min-width: 363px;
 }
 
 .wrapper {
@@ -46,7 +46,7 @@ body {
   transition: background-color 0.5s;
 }
 
-.button:hover {
+.button:hover, .button--activated {
   color: #fff;
   background-color: #e06733;
   transition: background-color 0.5s;
@@ -253,6 +253,13 @@ img {
   margin-bottom: 55px;
   outline: 1px solid #e3e1d5;
   outline-offset: -1px;
+  -webkit-transition: 0.6s -webkit-filter linear;
+  -moz-transition: 0.6s -moz-filter linear;
+  transition: 0.6s filter linear;
+}
+
+.service-card--blurred {
+  filter: blur(4px);
 }
 
 .service-card__image-block {
@@ -378,12 +385,12 @@ img {
   text-align: center;
 }
 
-.contacts-select-block {
+.contacts-select-wrapper {
   width: 450px;
   margin-left: auto;
 }
 
-.contacts-select {
+.contacts-selected {
   position: relative;
   width: 450px;
   height: 50px;
@@ -394,18 +401,55 @@ img {
   appearance: none;
   background: url("../img/city-arrow-down.svg") no-repeat 400px;
   background-color: #d6e7d2;
+  letter-spacing: 0.05em;
   cursor: pointer;
   transition: background-color 0.5s;
 }
 
-.contacts-select:hover,
-.contacts-select:focus {
+.contacts-selected:hover,
+.contacts-selected:focus {
   background-color: #c1e698;
   transition: background-color 0.5s;
 }
 
+.contacts-select {
+  min-height: 234px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #DCE9D9;
+  padding: 27px 35px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 .contacts-option {
-  border: none;
+  padding: 0px 6px;
+  color: #499A18;
+  border-bottom: 1px solid #D9D9D9;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+}
+
+.contacts-option:hover,
+.contacts-option:focus {
+  color: #717171;
+  border-color: #717171;
+  transition: background-color 0.5s;
+  transition: 0.5s;
+}
+
+.contacts-option__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.contacts-option__label {
+  display: block;
+  width: 100%;
+  cursor: pointer;
 }
 
 /* Footer */
@@ -598,7 +642,7 @@ img {
     margin-bottom: 99px;
   }
 
-  .contacts-select-block {
+  .contacts-select-wrapper {
     margin-right: auto;
   }
 }
@@ -922,11 +966,11 @@ img {
     margin-bottom: 83px;
   }
 
-  .contacts-select-block {
+  .contacts-select-wrapper {
     width: 300px;
   }
 
-  .contacts-select {
+  .contacts-selected {
     width: 300px;
     background-position: 262px;
   }
@@ -940,7 +984,6 @@ img {
     margin: 5px 0px 6px;
   }
 }
-
 
 @media (max-width: 376px) {
   .prices-accourdion__price {
