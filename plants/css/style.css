@@ -46,7 +46,8 @@ body {
   transition: background-color 0.5s;
 }
 
-.button:hover, .button--activated {
+.button:hover,
+.button--activated {
   color: #fff;
   background-color: #e06733;
   transition: background-color 0.5s;
@@ -344,23 +345,105 @@ img {
 }
 
 .prices-accourdion {
-  margin-bottom: 32px;
-}
-
-.prices-accourdion__price {
+  position: relative;
   width: 250px;
   padding: 15px 39px;
   font-weight: 700;
   line-height: 20px;
   border-radius: 20px;
   list-style: none;
-  cursor: pointer;
-  background: url("../img/price-arrow-down.svg") no-repeat 194px;
   background-color: #edf2ec;
+  margin-bottom: 32px;
+}
+
+.prices-accourdion__button-down,
+.prices-accourdion__button-up {
+  position: absolute;
+  left: 194px;
+  top: 16px;
+  border-radius: 50%;
+  border: none;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .prices-accourdion__description {
+  position: relative;
+  top: -82px;
+  margin-bottom: -52px;
+  width: 250px;
+  padding: 15px 47px 12px 39px;
+  border-radius: 20px;
+  line-height: 20px;
+  font-weight: 700;
+  background-color: #d6e7d2;
+  display: none;
+  animation: slide-down 0.4s ease-out;
+}
+
+.prices-accourdion__description--active {
+  display: block;
+}
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.prices-accourdion__name {
+  display: inline-block;
+  margin-bottom: 9px;
+}
+
+.prices-accourdion__about {
+  padding: 6px 0px;
   margin: 0;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 10px;
+  color: #717171;
+  border-top: 0.5px solid #aea1a1;
+}
+
+.prices-accourdion__pricetag {
+  font-size: 12px;
+  font-weight: 400;
+  color: #000;
+}
+
+.prices-accourdion__pricetag-colored {
+  font-size: 16px;
+  font-weight: 700;
+  color: #e06733;
+}
+
+.prices-accourdion__pricetag-colored-currency {
+  font-weight: 700;
+  color: #e06733;
+}
+
+.prices-accourdion__order-button {
+  color: #717171;
+  margin-top: 6px;
+  padding: 3px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  border: none;
+  background-color: #fff;
+  font-family: "Inter", sans-serif;
+  min-height: 25px;
+  min-width: 86px;
+  border-radius: 10px;
 }
 
 /* Contacts section */
@@ -417,7 +500,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #DCE9D9;
+  background-color: #dce9d9;
   padding: 27px 35px;
   position: relative;
   z-index: 2;
@@ -426,8 +509,8 @@ img {
 
 .contacts-option {
   padding: 0px 6px;
-  color: #499A18;
-  border-bottom: 1px solid #D9D9D9;
+  color: #499a18;
+  border-bottom: 1px solid #d9d9d9;
   font-size: 16px;
   letter-spacing: 0.05em;
 }
@@ -711,14 +794,10 @@ img {
   .prices-block {
     width: 67%;
     margin: 0 auto;
-    padding: 29px 22px;
+    padding: 29px 22px 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  .prices-accourdion:last-child {
-    margin-bottom: 0;
   }
 
   .contact-block {
@@ -735,6 +814,10 @@ img {
 @media (max-width: 576px) {
   .button {
     min-height: 34px;
+  }
+
+  .prices-accourdion__order-button {
+    min-height: 10px;
   }
 
   .header-wrapper {
@@ -763,7 +846,7 @@ img {
     visibility: visible;
     top: 0;
   }
-  
+
   .mobile-menu {
     display: flex;
     flex-direction: column;
@@ -779,7 +862,7 @@ img {
   }
 
   .mobile-menu::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -1px;
     left: 0;
@@ -795,7 +878,7 @@ img {
   }
 
   .mobile-menu::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 0;
     left: 0;
@@ -918,18 +1001,26 @@ img {
   }
 
   .prices-block {
-    padding-bottom: 26px;
+    padding-bottom: 12px;
   }
 
-  .prices-accourdion:not(:last-child) {
-    margin-bottom: 14px;
-  }
-
-  .prices-accourdion__price {
+  .prices-accourdion {
     width: 180px;
-    font-size: 15px;
-    background-position: 125px;
     padding-left: 31px;
+    margin-bottom: 14px;
+    font-size: 15px;
+  }
+
+  .prices-accourdion__button-down,
+  .prices-accourdion__button-up {
+    left: 125px;
+  }
+
+  .prices-accourdion__description {
+    top: -64px;
+    width: 180px;
+    padding-left: 31px;
+    font-size: 15px;
   }
 
   .prices-contact-title {
@@ -986,8 +1077,18 @@ img {
 }
 
 @media (max-width: 376px) {
-  .prices-accourdion__price {
+  .prices-accourdion {
     width: 150px;
+  }
+
+  .prices-accourdion__description {
+    width: 150px;
+    padding: 15px 31px;
+  }
+
+  .prices-accourdion__button-down,
+  .prices-accourdion__button-up {
+    left: 114px;
   }
 
   .contacts-select-block {

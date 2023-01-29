@@ -73,6 +73,81 @@ function serviceGardenFocus() {
   }
 }
 
-// Scores:
+// PRICES ACCORDION:
+
+// Order button
+
+const orderButtons = document.querySelectorAll('.prices-accourdion__order-button');
+
+for (let orderButton of orderButtons) {
+  orderButton.addEventListener('click', scrollToContacts);
+}
+
+function scrollToContacts() {
+document.querySelector('.contacts-title').scrollIntoView({
+        behavior: 'smooth'
+    });
+};
+
+// Open accordions
+
+const basicAccourdionDescription = document.querySelector('.basic-prices-accourdion__description');
+const basicAccourdionOpenButton = document.querySelector('.basic-prices-accourdion__button-down');
+const standardAccourdionDescription = document.querySelector('.standard-prices-accourdion__description');
+const standardAccourdionOpenButton = document.querySelector('.standard-prices-accourdion__button-down');
+const proAccourdionDescription = document.querySelector('.pro-prices-accourdion__description');
+const proAccourdionOpenButton = document.querySelector('.pro-prices-accourdion__button-down');
+
+basicAccourdionOpenButton.addEventListener('click', basicAccourdionOpen);
+
+standardAccourdionOpenButton.addEventListener('click', standardAccourdionOpen);
+
+proAccourdionOpenButton.addEventListener('click', proAccourdionOpen);
+
+function basicAccourdionOpen() {
+  basicAccourdionDescription.classList.add('prices-accourdion__description--active');
+  standardAccourdionDescription.classList.remove('prices-accourdion__description--active');
+  proAccourdionDescription.classList.remove('prices-accourdion__description--active');
+};
+
+function standardAccourdionOpen() {
+  standardAccourdionDescription.classList.add('prices-accourdion__description--active');
+  basicAccourdionDescription.classList.remove('prices-accourdion__description--active');
+  proAccourdionDescription.classList.remove('prices-accourdion__description--active');
+};
+
+function proAccourdionOpen() {
+  proAccourdionDescription.classList.add('prices-accourdion__description--active');
+  basicAccourdionDescription.classList.remove('prices-accourdion__description--active');
+  standardAccourdionDescription.classList.remove('prices-accourdion__description--active');
+};
+
+// Close accordions
+
+const basicAccourdionCloseButton = document.querySelector('.basic-prices-accourdion__button-up');
+
+const standardAccourdionCloseButton = document.querySelector('.standard-prices-accourdion__button-up');
+
+const proAccourdionCloseButton = document.querySelector('.pro-prices-accourdion__button-up');
+
+basicAccourdionCloseButton.addEventListener('click', basicAccourdionClose);
+
+standardAccourdionCloseButton.addEventListener('click', standardAccourdionClose);
+
+proAccourdionCloseButton.addEventListener('click', proAccourdionClose);
+
+function basicAccourdionClose() {
+  basicAccourdionDescription.classList.remove('prices-accourdion__description--active');
+};
+
+function standardAccourdionClose() {
+  standardAccourdionDescription.classList.remove('prices-accourdion__description--active');
+};
+
+function proAccourdionClose() {
+  proAccourdionDescription.classList.remove('prices-accourdion__description--active');
+};
+
+// SCORES:
 
 console.log('Самооценка')
