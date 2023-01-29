@@ -35,6 +35,44 @@ document.addEventListener('click', (e) => {
   }
 });
 
+// Services focus:
+
+/*
+let serviceButtons = document.querySelectorAll('.service-button');
+
+for (let i = 0; i < serviceButtons.length; i++) {
+  serviceButtons[i].addEventListener('click', serviceFocus);
+};
+
+function serviceFocus() {
+  if (document.querySelectorAll('.button--activated').length < 2) {
+    this.classList.toggle('button--activated');
+    document.querySelector('.service-card-garden').classList.toggle('service-card--blurred');
+  } else {
+    this.classList.remove('button--activated');
+  }
+}
+*/
+
+/*
+.service-card--blurred 
+.button--activated
+
+если в секции сервис нет ни одной кнопки с классом .button--activated, то удалить у всех карточек класс .service-card--blurred 
+*/
+
+document.querySelector('.service-garden-button').addEventListener('click', serviceGardenFocus);
+
+function serviceGardenFocus() {
+  if (document.querySelectorAll('.button--activated').length < 2) {
+    this.classList.toggle('button--activated');
+    document.querySelector('.service-card-planting').classList.toggle('service-card--blurred');
+    document.querySelector('.service-card-lawn').classList.toggle('service-card--blurred');
+  } else {
+    this.classList.remove('button--activated');
+  }
+}
+
 // Scores:
 
-console.log('Самооценка 75/75 баллов\nВёрстка соответствует макету. Ширина экрана 768px +24\nВёрстка соответствует макету. Ширина экрана 380px +24\nНи на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки. Весь контент страницы при этом сохраняется: не обрезается и не удаляется +15\nНа ширине экрана 380рх и меньше реализовано адаптивное меню +22')
+console.log('Самооценка')
