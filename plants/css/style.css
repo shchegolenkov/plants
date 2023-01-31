@@ -260,7 +260,7 @@ img {
 }
 
 .service-card--blurred {
-  filter: blur(4px);
+  filter: blur(2px);
 }
 
 .service-card__image-block {
@@ -471,13 +471,16 @@ img {
 .contacts-select-wrapper {
   width: 450px;
   margin-left: auto;
+  position: relative;
 }
 
 .contacts-selected {
   position: relative;
   width: 450px;
   height: 50px;
-  padding: 5px 22px;
+  padding: 5px 35px;
+  font-size: 16px;
+  line-height: 40px;
   color: #717171;
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -495,9 +498,18 @@ img {
   transition: background-color 0.5s;
 }
 
+.contacts-selected--active {
+  background-image: url("../img/city-arrow-up.svg");
+  background-color: #c1e698;
+}
+
+.contacts-selected--chosen {
+  background-color: #c1e698;
+}
+
 .contacts-select {
+  display: none;
   min-height: 234px;
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: #dce9d9;
@@ -505,6 +517,11 @@ img {
   position: relative;
   z-index: 2;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  animation: slide-down 0.3s ease-out;
+}
+
+.contacts-select--active {
+  display: flex;
 }
 
 .contacts-option {
@@ -533,6 +550,52 @@ img {
   display: block;
   width: 100%;
   cursor: pointer;
+}
+
+.contacts-city-card {
+  display: none;
+  position: absolute;
+  min-width: 450px;
+  top: 49px;
+  margin-top: 47px;
+  padding: 12px 32px 32px 32px;
+  border: 1px solid black;
+  border-radius: 20px;
+  font-size: 16px;
+  letter-spacing: 0.05em;
+}
+
+.contacts-city-card--active {
+  display: block;
+}
+
+.city-card-table {
+  font-size: 16px;
+  line-height: 37px;
+  text-align: left;
+}
+
+.city-card-table__col-1 {
+  font-weight: 400;
+  min-width: 132px;
+}
+
+.city-card-table__col-2 {
+  color: #717171;
+}
+
+.contacts-call-button {
+  display: block;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 7px 29px;
+  min-height: 26px;
+  min-width: 122px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 13px;
+  color: #717171;
 }
 
 /* Footer */
