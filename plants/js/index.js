@@ -1,3 +1,5 @@
+// BURGER MENU:
+
 // Opening and closing menu by menu button clicking:
 
 const menuButton = document.querySelector(".mobile-menu");
@@ -35,83 +37,113 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Services focus:
+// SERVICES FOCUS:
 
-/*
-let serviceButtons = document.querySelectorAll('.service-button');
+const serviceButtonsBlock = document.querySelector(".service-buttons-block");
 
-for (let i = 0; i < serviceButtons.length; i++) {
-  serviceButtons[i].addEventListener('click', serviceFocus);
-};
-
-function serviceFocus() {
-  if (document.querySelectorAll('.button--activated').length < 2) {
-    this.classList.toggle('button--activated');
-    document.querySelector('.service-card-garden').classList.toggle('service-card--blurred');
-  } else {
-    this.classList.remove('button--activated');
-  }
-}
-*/
-
-/*
-.service-card--blurred 
-.button--activated
-
-если в секции сервис нет ни одной кнопки с классом .button--activated, то удалить у всех карточек класс .service-card--blurred 
-*/
-
-const serviceGardenButton = document.querySelector(".service-garden-button");
-const serviceLawnButton = document.querySelector(".service-lawn-button");
-const servicePlantingButton = document.querySelector(
-  ".service-planting-button"
-);
 const serviceButtons = document.querySelectorAll(".service-button");
 
 const serviceCards = document.querySelectorAll(".service-card");
-const serviceCardsGarden = document.querySelectorAll(".service-card-garden");
-const serviceCardsPlanting = document.querySelectorAll(
-  ".service-card-planting"
-);
-const serviceCardLawn = document.querySelector(".service-card-lawn");
 
-serviceGardenButton.addEventListener("click", serviceGardenFocus);
-serviceLawnButton.addEventListener("click", serviceLawnFocus);
-servicePlantingButton.addEventListener("click", servicePlantingFocus);
+let blurredCards = [];
+let focusedCards = [];
 
-function serviceGardenFocus() {
-  if (document.querySelectorAll(".button--activated").length < 2) {
-    this.classList.toggle("button--activated");
-    for (let serviceCardGarden of serviceCardsGarden) {
-      serviceCardGarden.classList.toggle("service-card--blurred");
+serviceButtonsBlock.addEventListener("click", (event) => {
+  if (event.target.tagName !== "BUTTON") {
+    return false;
+  } else {
+    if (
+      document.querySelectorAll(".button--activated").length < 2 ||
+      event.target.classList.contains("button--activated")
+    ) {
+      event.target.classList.toggle("button--activated");
+    } // можно выбрать две из трёх кнопок, третью нельзя
+
+    if (document.querySelectorAll(".button--activated").length == 0) {
+      for (let serviceCard of serviceCards) {
+        serviceCard.classList.remove("service-card--blurred");
+      }
+    } // если нет активных кнопок, блюр убирается у всех карточек
+
+    if (document.querySelectorAll(".button--activated").length > 0) {
+      for (let serviceCard of serviceCards) {
+        if (
+          !(
+            serviceCard.classList.contains(
+              document.querySelectorAll(".button--activated")[0].dataset["card"]
+            ) ||
+            (document.querySelectorAll(".button--activated").length == 2 &&
+              serviceCard.classList.contains(
+                document.querySelectorAll(".button--activated")[1].dataset[
+                  "card"
+                ]
+              ))
+          )
+        ) {
+          if (!blurredCards.includes(serviceCard)) {
+            blurredCards.push(serviceCard);
+          }
+          if (focusedCards.includes(serviceCard)) {
+            focusedCards = focusedCards.filter(function (card) {
+              return card !== serviceCard;
+            });
+          }
+        } else {
+          blurredCards = blurredCards.filter(function (card) {
+            return card !== serviceCard;
+          });
+          if (!focusedCards.includes(serviceCard)) {
+            focusedCards.push(serviceCard);
+          }
+        }
+      }
+      for (let blurredCard of blurredCards) {
+        blurredCard.classList.add("service-card--blurred");
+      }
+      for (let focusedCard of focusedCards) {
+        focusedCard.classList.remove("service-card--blurred");
+      }
     }
-    for (let serviceCardPlanting of serviceCardsPlanting) {
-      serviceCardPlanting.classList.toggle("service-card--blurred");
-    }
-    serviceCardLawn.classList.toggle("service-card--blurred");
-  } else {
-    this.classList.remove("button--activated");
   }
-}
+}); // фокус на выбранных категориях
 
-function serviceLawnFocus() {
-  if (document.querySelectorAll(".button--activated").length < 2) {
-    this.classList.toggle("button--activated");
-    document
-      .querySelector(".service-card-lawn")
-      .classList.remove("service-card--blurred");
-  } else {
-    this.classList.remove("button--activated");
+serviceButtonsBlock.addEventListener("mouseover", (event) => {
+  if (event.target.tagName !== "BUTTON") {
+    return false;
   }
-}
+  if (
+    (event.target.tagName == "BUTTON") &
+    (document.querySelectorAll(".button--activated").length == 2) &
+    !event.target.classList.contains("button--activated")
+  ) {
+    event.target.classList.toggle("button");
+  }
+});
 
-function servicePlantingFocus() {
-  if (document.querySelectorAll(".button--activated").length < 2) {
-    this.classList.toggle("button--activated");
-  } else {
-    this.classList.remove("button--activated");
+serviceButtonsBlock.addEventListener("mouseout", (event) => {
+  if (event.target.tagName !== "BUTTON") {
+    return false;
   }
-}
+  if (
+    (event.target.tagName == "BUTTON") &
+    (document.querySelectorAll(".button--activated").length == 2) &
+    !event.target.classList.contains("button--activated")
+  ) {
+    event.target.classList.toggle("button");
+  }
+});
+
+/* serviceButtonsBlock.addEventListener("mouseout", (event) => {
+  if (event.target.tagName !== "BUTTON") {
+    return false;
+  }
+  if (
+    (event.target.tagName == "BUTTON") &
+    (document.querySelectorAll(".button--activated").length == 2)
+  ) {
+    event.target.classList.toggle("button");
+  }
+}); */
 
 // PRICES ACCORDION:
 
@@ -287,4 +319,6 @@ function callByClick() {
 
 // SCORES:
 
-console.log("Самооценка");
+console.log(
+  "Самооценка 100 баллов из 100\nВыполнены все пункты:\n1. При нажатии на кнопки: Gargens, Lawn, Planting происходит смена фокуса на услугах в разделе service +50\n2. Accordion в секции prices реализация 3-х выпадающих списков об услугах и ценах + 50\n3. В разделе contacts реализован select с выбором городов +25"
+);
